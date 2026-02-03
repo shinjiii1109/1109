@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Gauri 🛐🫶💗</title>
+    <style>
+        body {
+            background-color: #fff0f3;
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            overflow: hidden;
+            transition: background-color 1s ease;
+        }
+        .card {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 40px;
+            border-radius: 30px;
+            box-shadow: 0 15px 35px rgba(255, 77, 109, 0.2);
+            text-align: center;
+            max-width: 500px;
+            width: 85%;
+            z-index: 10;
+            position: relative;
+        }
+        h1 { color: #ff4d6d; margin-bottom: 20px; font-size: 2rem; }
+        p { color: #594d5b; line-height: 1.6; font-size: 1.1rem; }
+        
+        .buttons { 
+            margin-top: 30px; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center;
+            gap: 20px;
+            min-height: 60px;
+            position: relative;
+        }
+        
+        button {
+            padding: 15px 35px;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+        
+        #yesBtn { 
+            background-color: #ff4d6d; 
+            color: white; 
+            font-weight: bold;
+            z-index: 11;
+        }
+
+        #noBtn { 
+            background-color: #f8f9fa; 
+            color: #adb5bd; 
+            /* Start as relative so it stays next to Yes, then script moves it */
+            position: relative; 
+            z-index: 11;
+        }
+
+        .hidden { display: none; }
+        
+        .success-message {
+            white-space: pre-wrap;
+            font-size: 1.1rem;
+            color: #d63384;
+            animation: fadeIn 1s ease-in;
+            text-align: center;
+            font-weight: 500;
+            line-height: 1.8;
+        }
+
+        /* Heart Animation */
+        .heart {
+            position: fixed;
+            top: -10px;
+            font-size: 20px;
+            color: #ff4d6d;
+            user-select: none;
+            z-index: 1;
+            animation: fall linear forwards;
+        }
+
+        @keyframes fall {
+            to { transform: translateY(105vh) rotate(360deg); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card" id="questionCard">
+        <h1>Hey Gauri! 💗✨🌸</h1>
+        <p>I have a very important question for you...</p>
+        <p style="font-size: 1.3rem; font-weight: bold; color: #ff4d6d;">Will you be my Valentine? 🥺</p>
+        
+        <div class="buttons">
+            <button id="yesBtn" onclick="showLove()">YES! ❤️</button>
+            <button id="noBtn" onmouseover="moveButton()" onclick="moveButton()">No</button>
+        </div>
+    </div>
+
+    <div class="card hidden" id="loveCard">
+        <div class="success-message">
+Thank you Gauriiii!! 💗🧿✨🫶😭😽
+
+Thank you for choosing me thank you soooo muchhhhh 😩. I will try my best to make you the happiest person in the world 🛐. I hope we understand each other in our ups and downs and never get tired of each other 😸. I don't want a perfect relationship, I just want us to last forever, even further after marrying 🫠😋. 
+
+Thank youuuhhh once again 💗✨🫶 I luvvvv uhhhhh sooooo muccchhhhhh 😽💗✨💗🫶😋💗🫶💗🧿 ummaahhhhh 😸✨🫶🧿
+        </div>
+    </div>
+
+    <script>
+        function showLove() {
+            document.getElementById('questionCard').classList.add('hidden');
+            document.getElementById('loveCard').classList.remove('hidden');
+            document.body.style.backgroundColor = "#ffccd5";
+            setInterval(createHeart, 300);
+        }
+
+        function moveButton() {
+            const btn = document.getElementById('noBtn');
+            // Change to absolute so it can fly anywhere on screen
+            btn.style.position = "fixed"; 
+            
+            // Calculate random position
+            const x = Math.random() * (window.innerWidth - btn.offsetWidth - 40) + 20;
+            const y = Math.random() * (window.innerHeight - btn.offsetHeight - 40) + 20;
+            
+            btn.style.left = x + "px";
+            btn.style.top = y + "px";
+        }
+
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            // Randomize emojis for the rain
+            const emojis = ['💗', '✨', '🫶', '🌸', '💖'];
+            heart.innerHTML = emojis[Math.floor(Math.random() * emojis.length)];
+            
+            heart.style.left = Math.random() * 100 + "vw";
+            heart.style.animationDuration = Math.random() * 2 + 3 + "s";
+            document.body.appendChild(heart);
+            
+            setTimeout(() => { heart.remove(); }, 5000);
+        }
+    </script>
+</body>
+</html>
